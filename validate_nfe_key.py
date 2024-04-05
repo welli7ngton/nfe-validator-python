@@ -1,6 +1,8 @@
 # flake8: noqa
 from typing import List
 
+from exceptions import InvalidNFEKeyLenght
+
 
 class GenerateNfeDV:  
     @classmethod
@@ -17,7 +19,7 @@ class GenerateNfeDV:
             sum_of_list_items = cls.get_sum_of_lists_items(nfe_number_int, numbers_to_mulitplication)
             return cls.get_DV(sum_of_list_items)
         else:
-            print(f'Invalid Length({len(nfe_number)}) of NF-e Number.')
+            raise InvalidNFEKeyLenght(len(nfe_number))
 
     @staticmethod
     def veryfi_nfe_len(nfe_number: str) -> bool:
