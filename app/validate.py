@@ -1,7 +1,13 @@
 # flake8: noqa
 from typing import List
 
-from exceptions import InvalidNFEKeyLenght
+import sys
+from pathlib import Path
+file = Path(__file__).resolve()
+parent, root = file.parent, file.parents[1]
+sys.path.append(str(root))
+
+from my_exceptions.exceptions import InvalidNFEKeyLenght
 
 
 class GenerateNfeDV:  

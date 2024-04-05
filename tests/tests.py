@@ -1,11 +1,16 @@
 # flake8: noqa
 
+import sys
+from pathlib import Path
+file = Path(__file__).resolve()
+parent, root = file.parent, file.parents[1]
+sys.path.append(str(root))
+
+
 from unittest import TestCase, main
 
-from validate_nfe_key import GenerateNfeDV
-
-from exceptions import InvalidNFEKeyLenght
-
+from app.validate import GenerateNfeDV
+from my_exceptions.exceptions import InvalidNFEKeyLenght
 
 class ValidateNfeKeyTests(TestCase):
     def test_generate_dv(self):
