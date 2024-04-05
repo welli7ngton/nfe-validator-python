@@ -1,17 +1,19 @@
+# flake8: noqa
+
 from unittest import TestCase, main
+
 from validate_nfe_key import GenerateNfeDV
 
-'''
-GenerateNfeDV('3524030555538200013355010000491845106212768')
-GenerateNfeDV('3219110557071400082555001005914662113308296')
-GenerateNfeDV('3524 0305 5553 8200 0133 5501 0000 4918 4510 6212 768')
-GenerateNfeDV('3524.0305.5553.8200.0133.5501.0000.4918.4510.6212.768')
-'''
+from exceptions import InvalidNFEKeyLenght
 
 
 class ValidateNfeKeyTests(TestCase):
     def test_generate_dv(self):
         self.assertEqual(GenerateNfeDV.generate_dv('4317120736461700013555000000012014100012014'), 6)
+
+    def test_nfe_len_get_an_exception(self):
+        with self.assertRaises(InvalidNFEKeyLenght) as ex:
+            GenerateNfeDV.generate_dv('43171207364617000135550000000120141000120144')
 
 
 if __name__ == '__main__':
